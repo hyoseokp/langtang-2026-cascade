@@ -1,0 +1,17 @@
+{
+ "note": "Hydropower structures along the corridor for display. Sources: OpenStreetMap (weirs, powerhouses, tunnels; queried 2026-09-07), RGHPCL project description (Rasuwagadhi headworks 400 m below the Kerung-Lende confluence, 4185 m headrace), NWEDC/ADB (Upper Trishuli-1 dam 275 m below the Langtang Khola confluence, 9.7 km headrace to Mailung). Coordinates in WGS84.",
+ "features": [
+  {"name": "Rasuwagadhi HEP dam", "type": "dam", "lat": 28.2760, "lon": 85.3775, "tunnel_to": [28.2720, 85.3771], "tunnel_name": "Rasuwagadhi headrace 4.2 km"},
+  {"name": "Rasuwagadhi HEP powerhouse", "type": "powerhouse", "lat": 28.2720, "lon": 85.3771},
+  {"name": "Chilime HEP dam", "type": "dam", "lat": 28.1865, "lon": 85.2999, "tunnel_to": [28.1794, 85.3083]},
+  {"name": "Chilime HEP powerhouse", "type": "powerhouse", "lat": 28.1794, "lon": 85.3083},
+  {"name": "Upper Trishuli-1 dam (under construction)", "type": "dam", "lat": 28.1630, "lon": 85.3380, "tunnel_to": [28.0810, 85.2050], "tunnel_name": "UT-1 headrace 9.7 km"},
+  {"name": "Upper Trishuli-1 powerhouse (Mailung)", "type": "powerhouse", "lat": 28.0810, "lon": 85.2050},
+  {"name": "Upper Trishuli 3A headworks", "type": "dam", "lat": 28.0620, "lon": 85.2066, "tunnel_to": [28.0270, 85.1848], "tunnel_name": "UT-3A headrace 4.1 km"},
+  {"name": "Upper Trishuli 3A powerhouse", "type": "powerhouse", "lat": 28.0270, "lon": 85.1848},
+  {"name": "Upper Trishuli 3B intake", "type": "dam", "lat": 28.0247, "lon": 85.1859, "tunnel_to": [27.9949, 85.1831]},
+  {"name": "Upper Trishuli 3B powerhouse", "type": "powerhouse", "lat": 27.9949, "lon": 85.1831},
+  {"name": "Trishuli HPS weir (Bidur)", "type": "dam", "lat": 27.9249, "lon": 85.1469},
+  {"name": "Devighat HPS weir", "type": "dam", "lat": 27.8890, "lon": 85.1336}
+ ]
+}

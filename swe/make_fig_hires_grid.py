@@ -13,6 +13,7 @@ import numpy as np
 from PIL import Image
 
 matplotlib.use("Agg")
+matplotlib.rcParams["font.family"] = "Arial"; matplotlib.rcParams["font.weight"] = "normal"
 from matplotlib import pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
@@ -35,20 +36,21 @@ def main() -> None:
     labels = [f"{f * a.frame_dt:.0f} s" for f in a.frames]
     ims = [[autocrop(Image.open(base / pat.format(f))) for f in a.frames] for pat, _ in views]
     ratios = [max(im.height / im.width for im in row) for row in ims]
-    fig = plt.figure(figsize=(18, 6 * sum(ratios) + 1.6), dpi=170)
-    gs = fig.add_gridspec(4, 3, height_ratios=ratios + [0.16], hspace=0.05, wspace=0.03, left=0.01, right=0.99, top=0.985, bottom=0.005)
+    fig = plt.figure(figsize=(18, 6 * sum(ratios) + 2.4), dpi=170)
+    gs = fig.add_gridspec(4, 3, height_ratios=ratios + [0.2], hspace=0.12, wspace=0.03, left=0.01, right=0.99, top=0.97, bottom=0.005)
     k = 0
     for i, ((_, name), row) in enumerate(zip(views, ims)):
         for j, im in enumerate(row):
             ax = fig.add_subplot(gs[i, j]); ax.imshow(im); ax.set_axis_off()
-            ax.text(0.01, 0.99, f"{'abcdefghi'[k]}", transform=ax.transAxes, fontsize=22, fontweight="bold", va="top", ha="left")
-            ax.text(0.5, 0.99, f"{name}, t = {labels[j]}", transform=ax.transAxes, fontsize=17, va="top", ha="center",
-                    bbox=dict(facecolor="white", edgecolor="none", alpha=0.85, pad=3)); k += 1
+            ax.set_title(f"{'abcdefghi'[k]}   {name}, t = {labels[j]}", fontsize=17, loc="left", pad=6); k += 1
     lax = fig.add_subplot(gs[3, :]); lax.set_axis_off()
     handles = [Patch(facecolor=DEBRIS, label="debris flow (solids ≥ 35 %)"), Patch(facecolor=WATER, label="flood water (solids → 0)"),
                Patch(facecolor=BASE, label="pre-event river"), Line2D([0], [0], color="#00e5ff", lw=2.5, label="UNOSAT mapped affected surface"),
                Patch(facecolor=(0.6, 0.6, 0.6), label="profile: rise above the pre-event level"), Patch(facecolor=DEBRIS, label="profile: solids in the flow, h·c"),
-               Patch(facecolor=DEPOSIT, hatch="///", edgecolor="k", label="profile: settled deposit"), Line2D([0], [0], color=(0.3, 0.2, 0.1), lw=1.5, label="profile: channel scour")]
+               Patch(facecolor=DEPOSIT, hatch="///", edgecolor="k", label="profile: settled deposit"), Line2D([0], [0], color=(0.3, 0.2, 0.1), lw=1.5, label="profile: channel scour"),
+               Line2D([0], [0], marker="v", color="none", markerfacecolor="red", markeredgecolor="k", markersize=11, label="hydropower dam / weir"),
+               Line2D([0], [0], marker="D", color="none", markerfacecolor="yellow", markeredgecolor="k", markersize=9, label="powerhouse"),
+               Line2D([0], [0], color="magenta", ls="--", lw=2, label="headrace tunnel")]
     lax.legend(handles=handles, loc="center", ncol=4, fontsize=16, frameon=False, handlelength=2.2, columnspacing=2.0)
     fig.savefig(ROOT / "figures" / "paper" / a.out); print(ROOT / "figures" / "paper" / a.out)
 

@@ -18,6 +18,7 @@ import matplotlib
 import numpy as np
 
 matplotlib.use("Agg")
+matplotlib.rcParams["font.family"] = "Arial"; matplotlib.rcParams["font.weight"] = "normal"
 from matplotlib import pyplot as plt
 from matplotlib.colors import LightSource
 from matplotlib.lines import Line2D
@@ -102,6 +103,28 @@ def station_marker(ax, stations, extent, three_d=False, z_fn=None, fontsize=8):
                         bbox={"facecolor": "white", "alpha": 0.75, "edgecolor": "none", "pad": 1}, zorder=10)
 
 
+def infra_marker(ax, infra, extent, three_d=False, z_fn=None, fontsize=8, label=True):
+    """Hydropower dams/weirs (red triangles), powerhouses (yellow diamonds) and headrace tunnels (dashed magenta)."""
+    x0, x1, y0, y1 = extent
+    for f in infra:
+        if not (x0 <= f["x"] <= x1 and y0 <= f["y"] <= y1):
+            continue
+        if f.get("tx") is not None:
+            xs, ys = [f["x"], f["tx"]], [f["y"], f["ty"]]
+            if three_d:
+                ax.plot(xs, ys, [z_fn(xs[0], ys[0]) + 600, z_fn(xs[1], ys[1]) + 600], color="magenta", ls="--", lw=1.5, zorder=20)
+            else:
+                ax.plot(xs, ys, color="magenta", ls="--", lw=1.2, zorder=8)
+        mk, col = ("v", "red") if f["type"] == "dam" else ("D", "yellow")
+        if three_d:
+            ax.scatter([f["x"]], [f["y"]], [z_fn(f["x"], f["y"]) + 600], marker=mk, s=90, color=col, edgecolor="black", depthshade=False, zorder=21)
+        else:
+            ax.scatter(f["x"], f["y"], marker=mk, s=60 if fontsize > 12 else 35, facecolor=col, edgecolor="black", linewidth=0.8, zorder=9)
+            if label and f["type"] == "dam":
+                ax.annotate(f["short"], (f["x"], f["y"]), xytext=(-8, -4), textcoords="offset points", fontsize=fontsize, ha="right", va="top", color="darkred",
+                            bbox={"facecolor": "white", "alpha": 0.75, "edgecolor": "none", "pad": 1}, zorder=10)
+
+
 def render_one(args):
     frame_no, frame_path = args
     ctx = _CTX
@@ -140,6 +163,8 @@ def render_one(args):
                        linewidths=0.6)
         clean = ctx.get("clean", False)
         station_marker(ax, ctx["stations"], ext, fontsize=26 if clean else 8)
+        if ctx.get("infra"):
+            infra_marker(ax, ctx["infra"], ext, fontsize=20 if clean else 7, label=True)
         ax.set_xlim(x0, x1); ax.set_ylim(y0, y1); ax.set_aspect("equal")
         if clean:  # paper panels: no in-panel text; the composite figure carries one legend
             ax.set_xlabel("UTM 45N easting (km)", fontsize=22); ax.set_ylabel("UTM 45N northing (km)", fontsize=22)
@@ -176,9 +201,15 @@ def render_one(args):
             fig = plt.figure(figsize=(w, hgt), dpi=ctx["dpi"])
             ax3 = fig.add_subplot(111, projection="3d")
             fig.subplots_adjust(left=0.0, right=1.0, bottom=0.02, top=0.92)
+            ax3.computed_zorder = False  # markers and tunnel lines are drawn after the surface
             ax3.plot_surface(xx, yy, surf, facecolors=face, rstride=1, cstride=1, linewidth=0,
-                             antialiased=False, shade=False)
+                             antialiased=False, shade=False, zorder=1)
             zmin, zmax = view["zlim"]
+            if ctx.get("infra"):
+                full_l, full_r, full_b, full_t = ctx["extent"]; cell_m = (full_r - full_l) / ctx["z"].shape[1]
+                surf_full = ctx["z"] + h * ctx["exag"]
+                z_fn = lambda px, py: float(surf_full[int((full_t - py) // cell_m), int((px - full_l) // cell_m)])
+                infra_marker(ax3, ctx["infra"], ext, three_d=True, z_fn=z_fn)
             ax3.set_zlim(zmin, zmax)
             ax3.set_xlim(x0, x1); ax3.set_ylim(y0, y1)
             ax3.set_box_aspect((x1 - x0, y1 - y0, (zmax - zmin) * view["zscale"]))
@@ -279,11 +310,21 @@ def main() -> None:
         (out / f"{v['key']}_oblique").mkdir(parents=True, exist_ok=True)
     obs_path = ROOT / "inputs" / f"{a.tag}_observed_footprint.npz"
     obs = np.load(obs_path)["unosat_affected"] if obs_path.exists() else None
+    infra = []
+    infra_path = ROOT / "inputs" / "infrastructure.json"
+    if infra_path.exists():
+        from pyproj import Transformer
+        tr = Transformer.from_crs("EPSG:4326", "EPSG:32645", always_xy=True)
+        for f in json.loads(infra_path.read_text("utf-8"))["features"]:
+            x, y = tr.transform(f["lon"], f["lat"]); tx, ty = tr.transform(f["tunnel_to"][1], f["tunnel_to"][0]) if f.get("tunnel_to") else (None, None)
+            short = f["name"].replace(" (under construction)", "*").replace(" HEP", "").replace(" HPS", "").replace("Upper Trishuli", "UT").replace("Rasuwagadhi", "RG")
+            short = short.replace(" headworks", " weir").replace(" intake", " weir").replace(" (Bidur)", "")
+            infra.append({"name": f["name"], "short": short, "type": f["type"], "x": x, "y": y, "tx": tx, "ty": ty})
     if obs is not None and obs.shape != z.shape:
         obs = None
     ctx = {"z": z, "shade": shade, "xx": xx, "yy": yy, "h_base": h_base, "extent": (left, right, bottom, top), "obs": obs,
            "stations": stations, "views": views, "out": out, "dpi": a.dpi, "label": a.label, "exag": a.exag,
-           "series": series, "dilate": a.display_dilate}
+           "series": series, "dilate": a.display_dilate, "infra": infra}
     jobs = list(enumerate(frames))
     if a.paper_frames:
         idx = [int(s) for s in a.paper_frames.split(",")]; jobs = [(i, frames[i]) for i in idx]

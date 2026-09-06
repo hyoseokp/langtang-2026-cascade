@@ -19,6 +19,7 @@ import pandas as pd
 from shapely.geometry import shape
 
 matplotlib.use("Agg")
+matplotlib.rcParams["font.family"] = "Arial"; matplotlib.rcParams["font.weight"] = "normal"
 from matplotlib import pyplot as plt
 from matplotlib.collections import LineCollection
 
