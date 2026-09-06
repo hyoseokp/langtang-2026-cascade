@@ -9,6 +9,12 @@ animations from the terrain and observation inputs. Large inputs (the corridor g
 elevation-change rasters, the stored run outputs and the rendered videos) are not in git; they are archived on Zenodo
 (see *Data*).
 
+## Figure 1 from the revised manuscript
+
+[![Figure 1. Corrected reconstruction of the release crossing the gorge, shown in oblique, plan and longitudinal-profile views.](docs/figures/fig1_corrected.png)](docs/figures/fig1_corrected.png)
+
+**Figure 1. The release crossing the gorge.** From the revised manuscript submitted to *Landslides*. The corrected 60 m corridor reconstruction is shown at 420, 1200 and 3600 s. Orange denotes solids-rich mixture and blue denotes diluted flood water. Flow depth is exaggerated fourfold in the oblique views and eightfold in the upper longitudinal profiles. Stage change in the lower profiles is shown at true scale. This is a model prediction, not an observed inundation map. Click the figure to open the full-resolution image.
+
 ## Watch the archived animations
 
 [**Open the animation and data archive on Zenodo**](https://doi.org/10.5281/zenodo.22549201)
