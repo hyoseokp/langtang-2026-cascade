@@ -49,8 +49,7 @@ def main() -> None:
                Patch(facecolor=(0.6, 0.6, 0.6), label="profile: rise above the pre-event level"), Patch(facecolor=DEBRIS, label="profile: solids in the flow, h·c"),
                Patch(facecolor=DEPOSIT, hatch="///", edgecolor="k", label="profile: settled deposit"), Line2D([0], [0], color=(0.3, 0.2, 0.1), lw=1.5, label="profile: channel scour"),
                Line2D([0], [0], marker="v", color="none", markerfacecolor="red", markeredgecolor="k", markersize=11, label="dam / weir (RG below Gyirong, UT-1 at Syabrubesi, UT-3A, UT-3B)"),
-               Line2D([0], [0], marker="D", color="none", markerfacecolor="yellow", markeredgecolor="k", markersize=9, label="powerhouse"),
-               Line2D([0], [0], color="magenta", ls="--", lw=2, label="headrace tunnel")]
+               Line2D([0], [0], marker="D", color="none", markerfacecolor="yellow", markeredgecolor="k", markersize=9, label="powerhouse")]
     lax.legend(handles=handles, loc="center", ncol=3, fontsize=15, frameon=False, handlelength=2.0, columnspacing=1.2)
     fig.savefig(ROOT / "figures" / "paper" / a.out); print(ROOT / "figures" / "paper" / a.out)
 

@@ -43,19 +43,33 @@ def force_metrics(run):
     return float(d.Fmag.max()), float(big.t.max() - big.t.min())
 
 
-def upper_gorge_hmax(run, uc):
-    hmax = np.zeros(uc.size, np.float32)
+def thalweg_path(inp):
+    """D8 path from the source with its chainage (km) and 3x3 neighbourhoods, as in render_profile / height_vs_trimline."""
+    z = inp["z"]; rows, cols = z.shape; cell = 30.0 if rows > 1500 or cols < 1000 else 60.0
+    rcv = inp["rcv"].astype(np.int64).ravel(); src = inp["source_mask"]
+    r0, c0 = np.argwhere(src)[np.argmin(z[src])]; node = int(r0 * cols + c0); path = [node]
+    while rcv[node] >= 0:
+        node = int(rcv[node]); path.append(node)
+    path = np.array(path); pr, pc = np.divmod(path, cols)
+    step = np.where((np.diff(pr) != 0) & (np.diff(pc) != 0), cell * np.sqrt(2.0), cell); chain = np.r_[0.0, np.cumsum(step)] / 1e3
+    nb = np.stack([np.clip(pr + dr, 0, rows - 1) * cols + np.clip(pc + dc, 0, cols - 1) for dr in (-1, 0, 1) for dc in (-1, 0, 1)], axis=1)
+    return chain, nb
+
+
+def upper_gorge_hmax(run, inp, limit_km=22.0):
+    """Median over 1-km bins of the maximum flow height sampled on the thalweg path (3x3), the metric of the trimline comparison."""
+    chain, nb = thalweg_path(inp); n = inp["z"].size; hmax = np.zeros(len(chain), np.float32)
     for fp in sorted((ROOT / "runs" / run / "frames").glob("frame_*.npz")):
-        fr = np.load(fp); np.maximum.at(hmax, fr["idx"], fr["h"].astype(np.float32))
-    sel = np.isfinite(uc) & (uc < 22000) & (hmax > 1)
+        fr = np.load(fp); h = np.zeros(n, np.float32); h[fr["idx"]] = fr["h"].astype(np.float32); hmax = np.maximum(hmax, h[nb].max(axis=1))
+    sel = chain < limit_km
     if not sel.any():
         return np.nan
-    b = (uc[sel] // 1000).astype(int); peaks = np.zeros(b.max() + 1, np.float32); np.maximum.at(peaks, b, hmax[sel])
-    return float(np.median(peaks[peaks > 0]))  # median over 1-km bins of the bin maximum, as in the trimline comparison
+    b = np.floor(chain[sel]).astype(int); peaks = np.zeros(b.max() + 1, np.float32); np.maximum.at(peaks, b, hmax[sel])
+    return float(np.median(peaks[peaks > 0]))
 
 
 def main() -> None:
-    uc = np.load(ROOT / "inputs" / "upper30h.npz")["upper_chainage_m"].astype(np.float64).ravel()  # gorge heights from the 30 m force runs (resolution)
+    inp30 = dict(np.load(ROOT / "inputs" / "upper30h.npz"))  # gorge heights from the 30 m force runs (resolution)
     rows = []
     for ice in ICES:
         for sc in SCALES:
@@ -76,7 +90,7 @@ def main() -> None:
                     v = sweep.station_metrics(s2 if st in UPPER else s1, st)[qty]; terms[f"{st.split('_')[0]}_{qty}"] = 9.0 if not np.isfinite(v) else min(((v - target) / tol) ** 2, 9.0)
                     rec[f"{st.split('_')[0]}_{qty}"] = round(v, 2) if np.isfinite(v) else np.nan
                 f30 = f"fvf30_s{sc:g}_i{ice:g}"; s30 = pd.read_csv(ROOT / "runs" / f30 / "series.csv") if (ROOT / "runs" / f30 / "series.csv").exists() else None
-                hts = {"upper_gorge_hmax_m": upper_gorge_hmax(f30, uc) if (ROOT / "runs" / f30 / "frames").exists() else np.nan,
+                hts = {"upper_gorge_hmax_m": upper_gorge_hmax(f30, inp30) if (ROOT / "runs" / f30 / "frames").exists() else np.nan,
                        "rasuwagadhi_rise_m": sweep.station_metrics(s30, "rasuwagadhi_signal_loss")["rise_m"] if s30 is not None else np.nan,
                        "syabrubesi_rise_m": sweep.station_metrics(s2, "syabrubesi_signal_loss")["rise_m"]}
                 for k, tgt, tol in HEIGHT:
