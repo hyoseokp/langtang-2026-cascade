@@ -9,6 +9,25 @@ animations from the terrain and observation inputs. Large inputs (the corridor g
 elevation-change rasters, the stored run outputs and the rendered videos) are not in git; they are archived on Zenodo
 (see *Data*).
 
+## Watch the archived animations
+
+[**Open the animation and data archive on Zenodo**](https://doi.org/10.5281/zenodo.22549201)
+
+These animations accompany the original reconstruction. They have not been regenerated for the revised manuscript submitted to *Landslides*, titled *A rock-ice avalanche and the 2026 Bhote Koshi-Trishuli flood, Nepal*. They should not be used as quantitative visualizations of the revised solver or the selected downstream routing case.
+
+Select a video below to open the MP4. Depending on your browser, the file will play in a new page or download. The time intervals refer to simulation output sampling, not playback duration.
+
+| Area | View | Simulation interval | Video |
+|---|---|---|---|
+| Gorge | Oblique 3-D | 10 s | [Open MP4](https://zenodo.org/api/records/22549201/files/animation_gorge_oblique_10s.mp4/content) |
+| Gorge | Plan view | 10 s | [Open MP4](https://zenodo.org/api/records/22549201/files/animation_gorge_top_10s.mp4/content) |
+| Gorge | Longitudinal profile | 10 s | [Open MP4](https://zenodo.org/api/records/22549201/files/animation_gorge_profile_10s.mp4/content) |
+| Full corridor | Oblique 3-D | 60 s | [Open MP4](https://zenodo.org/api/records/22549201/files/animation_full_corridor_oblique_60s.mp4/content) |
+| Full corridor | Plan view | 60 s | [Open MP4](https://zenodo.org/api/records/22549201/files/animation_full_corridor_top_60s.mp4/content) |
+| Full corridor | Longitudinal profile | 60 s | [Open MP4](https://zenodo.org/api/records/22549201/files/animation_full_corridor_profile_60s.mp4/content) |
+
+The archived code is available at [doi:10.5281/zenodo.22549896](https://doi.org/10.5281/zenodo.22549896). The reproduction instructions below describe the original reconstruction.
+
 ## Layout
 
 | path | content |
