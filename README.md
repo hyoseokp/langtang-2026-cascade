@@ -1,7 +1,7 @@
 # Langtang 2026 rock–ice avalanche to 180-km flood: reconstruction code
 
 Code, run definitions and small registry files behind the paper
-*A rock–ice avalanche without yield strength became a 180-km flood: reconstruction of the 26 August 2026 Langtang cascade*
+*A rock–ice avalanche without yield strength caused the 2026 Bhote Koshi–Trishuli flood, Nepal* (preprint)
 (H. Park, Chungnam National University).
 
 The repository holds everything needed to regenerate the simulations, the inversion grids, the figures and the
@@ -51,6 +51,7 @@ pip install -r requirements-gis.txt        # preprocessing and the GIS-reading f
    python swe/make_active.py --tag corridor60s
    python swe/preprocess_inputs.py --cell 30 --tag upper30h --bbox <see inputs/upper30h.json>
    python swe/make_active.py --tag upper30h
+   python swe/smooth_pools.py --tag corridor60s              # pool-filled bed used for the animations (corridor60sp)
    ```
 2. **River spin-up** (48 h at 60 m, 4 h at 30 m):
    ```
