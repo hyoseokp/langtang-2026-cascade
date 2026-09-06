@@ -79,7 +79,7 @@ def _init_worker(ctx):
     _CTX.update(ctx)
 
 
-def station_marker(ax, stations, extent, three_d=False, z_fn=None):
+def station_marker(ax, stations, extent, three_d=False, z_fn=None, fontsize=8):
     x0, x1, y0, y1 = extent
     for key, s in stations.items():
         if not (x0 <= s["x"] <= x1 and y0 <= s["y"] <= y1):
@@ -90,7 +90,15 @@ def station_marker(ax, stations, extent, three_d=False, z_fn=None):
                        edgecolor="black", depthshade=False)
         else:
             ax.scatter(s["x"], s["y"], marker=mk, s=45, facecolor="white", edgecolor="black", linewidth=0.8, zorder=9)
-            ax.annotate(s["label"], (s["x"], s["y"]), xytext=(6, 5), textcoords="offset points", fontsize=8,
+            label, xy, ha = s["label"], (6, 5), "left"
+            if fontsize > 12:  # paper panels: short, non-overlapping labels
+                if "cctv" in key:
+                    label, xy = "Gyirong", (8, 14)
+                elif key == "rasuwagadhi_signal_loss":
+                    xy = (8, -26)
+                elif key == "usgs_main_onset":
+                    label, xy, ha = "source", (-10, -8), "right"
+            ax.annotate(label, (s["x"], s["y"]), xytext=xy, textcoords="offset points", fontsize=fontsize, ha=ha,
                         bbox={"facecolor": "white", "alpha": 0.75, "edgecolor": "none", "pad": 1}, zorder=10)
 
 
@@ -130,24 +138,31 @@ def render_one(args):
             ys = np.linspace(y1, y0, r1 - r0, endpoint=False) - 30
             ax.contour(xs, ys, ctx["obs"][r0:r1, c0:c1].astype(float), levels=[0.5], colors=["#00e5ff"],
                        linewidths=0.6)
-        station_marker(ax, ctx["stations"], ext)
+        clean = ctx.get("clean", False)
+        station_marker(ax, ctx["stations"], ext, fontsize=26 if clean else 8)
         ax.set_xlim(x0, x1); ax.set_ylim(y0, y1); ax.set_aspect("equal")
-        ax.set_title(title, fontsize=11)
-        ax.set_xlabel("UTM 45N easting (m)"); ax.set_ylabel("UTM 45N northing (m)")
-        ax.tick_params(labelsize=8)
-        handles = [Line2D([0], [0], marker="s", linestyle="none", markerfacecolor=col, markeredgecolor="none",
-                          markersize=8, label=lab) for lab, col in
-                   (("debris flow (solids >= 35 %)", DEBRIS_RGB), ("flood water (solids -> 0)", WATER_RGB),
-                    ("pre-event river", BASE_RGB))]
-        handles.append(Line2D([0], [0], color="#00e5ff", linewidth=1.2, label="UNOSAT mapped affected surface"))
-        ax.legend(handles=handles, loc="lower left", fontsize=8, framealpha=0.85)
-        ax.text(0.99, 0.01, front_txt, transform=ax.transAxes, ha="right", va="bottom", fontsize=8,
-                bbox={"facecolor": "white", "alpha": 0.8, "edgecolor": "none"})
-        name_txt = view["name"] + (f" | wet cells widened by {k_dil} cells for display" if k_dil else "")
-        ax.text(0.01, 0.99, name_txt, transform=ax.transAxes, ha="left", va="top", fontsize=9,
-                bbox={"facecolor": "white", "alpha": 0.8, "edgecolor": "none"})
-        out = ctx["out"] / f"{view['key']}_top" / f"f_{frame_no:05d}.png"
-        fig.savefig(out); plt.close(fig); outputs.append(out)
+        if clean:  # paper panels: no in-panel text; the composite figure carries one legend
+            ax.set_xlabel("UTM 45N easting (km)", fontsize=22); ax.set_ylabel("UTM 45N northing (km)", fontsize=22)
+            ax.set_xticks(np.arange(np.ceil(x0 / 5000) * 5000, x1, 5000)); ax.set_yticks(np.arange(np.ceil(y0 / 5000) * 5000, y1, 5000))
+            ax.set_xticklabels([f"{v/1e3:.0f}" for v in ax.get_xticks()]); ax.set_yticklabels([f"{v/1e3:.0f}" for v in ax.get_yticks()]); ax.tick_params(labelsize=18)
+            out = ctx["out"] / f"{view['key']}_top_{frame_no:05d}.png"; fig.savefig(out); plt.close(fig); outputs.append(out)
+        else:
+            ax.set_title(title, fontsize=11)
+            ax.set_xlabel("UTM 45N easting (m)"); ax.set_ylabel("UTM 45N northing (m)")
+            ax.tick_params(labelsize=8)
+            handles = [Line2D([0], [0], marker="s", linestyle="none", markerfacecolor=col, markeredgecolor="none",
+                              markersize=8, label=lab) for lab, col in
+                       (("debris flow (solids >= 35 %)", DEBRIS_RGB), ("flood water (solids -> 0)", WATER_RGB),
+                        ("pre-event river", BASE_RGB))]
+            handles.append(Line2D([0], [0], color="#00e5ff", linewidth=1.2, label="UNOSAT mapped affected surface"))
+            ax.legend(handles=handles, loc="lower left", fontsize=8, framealpha=0.85)
+            ax.text(0.99, 0.01, front_txt, transform=ax.transAxes, ha="right", va="bottom", fontsize=8,
+                    bbox={"facecolor": "white", "alpha": 0.8, "edgecolor": "none"})
+            name_txt = view["name"] + (f" | wet cells widened by {k_dil} cells for display" if k_dil else "")
+            ax.text(0.01, 0.99, name_txt, transform=ax.transAxes, ha="left", va="top", fontsize=9,
+                    bbox={"facecolor": "white", "alpha": 0.8, "edgecolor": "none"})
+            out = ctx["out"] / f"{view['key']}_top" / f"f_{frame_no:05d}.png"
+            fig.savefig(out); plt.close(fig); outputs.append(out)
         if view.get("oblique"):
             st = view["stride"]
             zz = ctx["z"][r0:r1:st, c0:c1:st]
@@ -169,11 +184,15 @@ def render_one(args):
             ax3.set_box_aspect((x1 - x0, y1 - y0, (zmax - zmin) * view["zscale"]))
             ax3.view_init(elev=view["elev"], azim=view["azim"])
             ax3.set_axis_off()
-            ax3.set_title(title, fontsize=11)
-            ax3.text2D(0.01, 0.02, f"{view['name']} | oblique view, flow thickness x{ctx['exag']:g} for display, "
-                       f"terrain vertical scale x{view['zscale']:g}; mesh stride {st} (statistics on the 60 m grid)\n{front_txt}",
-                       transform=ax3.transAxes, fontsize=8)
-            out = ctx["out"] / f"{view['key']}_oblique" / f"f_{frame_no:05d}.png"
+            if clean:
+                fig.subplots_adjust(left=0.0, right=1.0, bottom=0.0, top=1.0)
+                out = ctx["out"] / f"{view['key']}_oblique_{frame_no:05d}.png"
+            else:
+                ax3.set_title(title, fontsize=11)
+                ax3.text2D(0.01, 0.02, f"{view['name']} | oblique view, flow thickness x{ctx['exag']:g} for display, "
+                           f"terrain vertical scale x{view['zscale']:g}; mesh stride {st} (statistics on the 60 m grid)\n{front_txt}",
+                           transform=ax3.transAxes, fontsize=8)
+                out = ctx["out"] / f"{view['key']}_oblique" / f"f_{frame_no:05d}.png"
             fig.savefig(out); plt.close(fig); outputs.append(out)
     return frame_no
 
@@ -201,6 +220,7 @@ def main() -> None:
     p.add_argument("--display-dilate", type=int, default=0, help="display-only widening of wet cells (cells)")
     p.add_argument("--views", default="", help="comma-separated view keys to render (default all)")
     p.add_argument("--stride", type=int, default=0, help="override the oblique mesh stride")
+    p.add_argument("--paper-frames", default="", help="comma-separated frame indices: render only these as clean paper panels (no video)")
     a = p.parse_args()
 
     inp, meta = load_inputs(a.tag)
@@ -265,6 +285,13 @@ def main() -> None:
            "stations": stations, "views": views, "out": out, "dpi": a.dpi, "label": a.label, "exag": a.exag,
            "series": series, "dilate": a.display_dilate}
     jobs = list(enumerate(frames))
+    if a.paper_frames:
+        idx = [int(s) for s in a.paper_frames.split(",")]; jobs = [(i, frames[i]) for i in idx]
+        ctx["clean"] = True; ctx["out"] = out / "paper"; ctx["out"].mkdir(parents=True, exist_ok=True)
+        _init_worker(ctx)
+        for j in jobs:
+            render_one(j); print("paper panel", j[0], flush=True)
+        return
     with Pool(a.workers, initializer=_init_worker, initargs=(ctx,)) as pool:
         for i, _ in enumerate(pool.imap_unordered(render_one, jobs, chunksize=2)):
             if i % 20 == 0:
