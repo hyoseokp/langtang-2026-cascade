@@ -4,6 +4,7 @@ title: "Langtang 2026 rock-ice avalanche to 180-km flood: reconstruction code"
 version: "1.0.2"
 date-released: "2026-09-07"
 license: MIT
+doi: 10.5281/zenodo.22549896
 repository-code: "https://github.com/hyoseokp/langtang-2026-cascade"
 authors:
   - family-names: Park

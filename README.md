@@ -96,7 +96,7 @@ pip install -r requirements-gis.txt        # preprocessing and the GIS-reading f
 Observation sources: UNOSAT product 4260 (detachment zone, affected surface), DHM Nepal stage records, Planet
 disturbance mapping, Geo-PERA elevation-change products, USGS/GFZ seismic origins and the EarthScope force inversion,
 as cited in the paper. The Copernicus GLO-30 DSM and the derived corridor grids, together with the stored run outputs
-used for every figure and the rendered videos, are archived on Zenodo (DOI in the paper's Data availability statement).
+used for every figure and the rendered videos, are archived on Zenodo: code doi:10.5281/zenodo.22549896, data and animations doi:10.5281/zenodo.22549201.
 
 ## Licence
 
