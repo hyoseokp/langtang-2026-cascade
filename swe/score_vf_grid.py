@@ -48,7 +48,10 @@ def upper_gorge_hmax(run, uc):
     for fp in sorted((ROOT / "runs" / run / "frames").glob("frame_*.npz")):
         fr = np.load(fp); np.maximum.at(hmax, fr["idx"], fr["h"].astype(np.float32))
     sel = np.isfinite(uc) & (uc < 22000) & (hmax > 1)
-    return float(np.median(hmax[sel])) if sel.any() else np.nan
+    if not sel.any():
+        return np.nan
+    b = (uc[sel] // 1000).astype(int); peaks = np.zeros(b.max() + 1, np.float32); np.maximum.at(peaks, b, hmax[sel])
+    return float(np.median(peaks[peaks > 0]))  # median over 1-km bins of the bin maximum, as in the trimline comparison
 
 
 def main() -> None:

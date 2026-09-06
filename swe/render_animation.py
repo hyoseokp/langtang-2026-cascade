@@ -94,9 +94,11 @@ def station_marker(ax, stations, extent, three_d=False, z_fn=None, fontsize=8):
             label, xy, ha = s["label"], (6, 5), "left"
             if fontsize > 12:  # paper panels: short, non-overlapping labels
                 if "cctv" in key:
-                    label, xy = "Gyirong", (8, 14)
+                    label, xy, ha = "Gyirong", (-12, 10), "right"  # west of the marker: the Lhende loop lies east
                 elif key == "rasuwagadhi_signal_loss":
-                    xy = (8, -26)
+                    xy = (16, -30)  # east of the channel, which runs south from here
+                elif key == "syabrubesi_signal_loss":
+                    xy = (14, -26)  # south-east: the Langtang Khola joins from the east, the river leaves south-west
                 elif key == "usgs_main_onset":
                     label, xy, ha = "source", (-10, -8), "right"
             ax.annotate(label, (s["x"], s["y"]), xytext=xy, textcoords="offset points", fontsize=fontsize, ha=ha,
@@ -120,8 +122,10 @@ def infra_marker(ax, infra, extent, three_d=False, z_fn=None, fontsize=8, label=
             ax.scatter([f["x"]], [f["y"]], [z_fn(f["x"], f["y"]) + 600], marker=mk, s=90, color=col, edgecolor="black", depthshade=False, zorder=21)
         else:
             ax.scatter(f["x"], f["y"], marker=mk, s=60 if fontsize > 12 else 35, facecolor=col, edgecolor="black", linewidth=0.8, zorder=9)
-            if label and f["type"] == "dam":
-                ax.annotate(f["short"], (f["x"], f["y"]), xytext=(-8, -4), textcoords="offset points", fontsize=fontsize, ha="right", va="top", color="darkred",
+            if label and f["type"] == "dam" and f["short"] in ("UT 3A weir", "UT 3B weir"):  # RG dam and UT-1 dam sit under the Gyirong / Syabrubesi station labels
+                off = {"RG dam": (-8, 10, "right", "bottom"), "Chilime dam": (-8, 4, "right", "center"), "UT-1 dam*": (14, -2, "left", "center"),
+                       "UT 3A weir": (10, 8, "left", "center"), "UT 3B weir": (10, -6, "left", "center")}.get(f["short"], (-8, -4, "right", "top"))
+                ax.annotate(f["short"], (f["x"], f["y"]), xytext=off[:2], textcoords="offset points", fontsize=fontsize, ha=off[2], va=off[3], color="darkred",
                             bbox={"facecolor": "white", "alpha": 0.75, "edgecolor": "none", "pad": 1}, zorder=10)
 
 

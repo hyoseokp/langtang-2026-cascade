@@ -3,8 +3,6 @@
  "features": [
   {"name": "Rasuwagadhi HEP dam", "type": "dam", "lat": 28.2760, "lon": 85.3775, "tunnel_to": [28.2720, 85.3771], "tunnel_name": "Rasuwagadhi headrace 4.2 km"},
   {"name": "Rasuwagadhi HEP powerhouse", "type": "powerhouse", "lat": 28.2720, "lon": 85.3771},
-  {"name": "Chilime HEP dam", "type": "dam", "lat": 28.1865, "lon": 85.2999, "tunnel_to": [28.1794, 85.3083]},
-  {"name": "Chilime HEP powerhouse", "type": "powerhouse", "lat": 28.1794, "lon": 85.3083},
   {"name": "Upper Trishuli-1 dam (under construction)", "type": "dam", "lat": 28.1630, "lon": 85.3380, "tunnel_to": [28.0810, 85.2050], "tunnel_name": "UT-1 headrace 9.7 km"},
   {"name": "Upper Trishuli-1 powerhouse (Mailung)", "type": "powerhouse", "lat": 28.0810, "lon": 85.2050},
   {"name": "Upper Trishuli 3A headworks", "type": "dam", "lat": 28.0620, "lon": 85.2066, "tunnel_to": [28.0270, 85.1848], "tunnel_name": "UT-3A headrace 4.1 km"},

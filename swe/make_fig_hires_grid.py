@@ -37,7 +37,7 @@ def main() -> None:
     ims = [[autocrop(Image.open(base / pat.format(f))) for f in a.frames] for pat, _ in views]
     ratios = [max(im.height / im.width for im in row) for row in ims]
     fig = plt.figure(figsize=(18, 6 * sum(ratios) + 2.4), dpi=170)
-    gs = fig.add_gridspec(4, 3, height_ratios=ratios + [0.2], hspace=0.12, wspace=0.03, left=0.01, right=0.99, top=0.97, bottom=0.005)
+    gs = fig.add_gridspec(4, 3, height_ratios=ratios + [0.26], hspace=0.12, wspace=0.03, left=0.01, right=0.99, top=0.97, bottom=0.005)
     k = 0
     for i, ((_, name), row) in enumerate(zip(views, ims)):
         for j, im in enumerate(row):
@@ -48,10 +48,10 @@ def main() -> None:
                Patch(facecolor=BASE, label="pre-event river"), Line2D([0], [0], color="#00e5ff", lw=2.5, label="UNOSAT mapped affected surface"),
                Patch(facecolor=(0.6, 0.6, 0.6), label="profile: rise above the pre-event level"), Patch(facecolor=DEBRIS, label="profile: solids in the flow, h·c"),
                Patch(facecolor=DEPOSIT, hatch="///", edgecolor="k", label="profile: settled deposit"), Line2D([0], [0], color=(0.3, 0.2, 0.1), lw=1.5, label="profile: channel scour"),
-               Line2D([0], [0], marker="v", color="none", markerfacecolor="red", markeredgecolor="k", markersize=11, label="hydropower dam / weir"),
+               Line2D([0], [0], marker="v", color="none", markerfacecolor="red", markeredgecolor="k", markersize=11, label="dam / weir (RG below Gyirong, UT-1 at Syabrubesi, UT-3A, UT-3B)"),
                Line2D([0], [0], marker="D", color="none", markerfacecolor="yellow", markeredgecolor="k", markersize=9, label="powerhouse"),
                Line2D([0], [0], color="magenta", ls="--", lw=2, label="headrace tunnel")]
-    lax.legend(handles=handles, loc="center", ncol=4, fontsize=16, frameon=False, handlelength=2.2, columnspacing=2.0)
+    lax.legend(handles=handles, loc="center", ncol=3, fontsize=15, frameon=False, handlelength=2.0, columnspacing=1.2)
     fig.savefig(ROOT / "figures" / "paper" / a.out); print(ROOT / "figures" / "paper" / a.out)
 
 
