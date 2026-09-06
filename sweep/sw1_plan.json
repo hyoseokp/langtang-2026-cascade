@@ -1,0 +1,266 @@
+[
+ {
+  "run": "sw1_00",
+  "params": {
+   "n_w": 0.0208,
+   "release_c0": 0.7649,
+   "n_d": 0.0145,
+   "dep_uc": 1.8327,
+   "dep_tau": 337.3898,
+   "erosion_k": 0.0074
+  }
+ },
+ {
+  "run": "sw1_01",
+  "params": {
+   "n_w": 0.0334,
+   "release_c0": 0.8475,
+   "n_d": 0.018,
+   "dep_uc": 2.0233,
+   "dep_tau": 158.8015,
+   "erosion_k": 0.0021
+  }
+ },
+ {
+  "run": "sw1_02",
+  "params": {
+   "n_w": 0.0245,
+   "release_c0": 0.9024,
+   "n_d": 0.0272,
+   "dep_uc": 2.5799,
+   "dep_tau": 532.7882,
+   "erosion_k": 0.0045
+  }
+ },
+ {
+  "run": "sw1_03",
+  "params": {
+   "n_w": 0.0309,
+   "release_c0": 0.951,
+   "n_d": 0.0266,
+   "dep_uc": 5.5494,
+   "dep_tau": 1562.5965,
+   "erosion_k": 0.0042
+  }
+ },
+ {
+  "run": "sw1_04",
+  "params": {
+   "n_w": 0.0301,
+   "release_c0": 0.8857,
+   "n_d": 0.0233,
+   "dep_uc": 4.2971,
+   "dep_tau": 1038.4301,
+   "erosion_k": 0.0033
+  }
+ },
+ {
+  "run": "sw1_05",
+  "params": {
+   "n_w": 0.0345,
+   "release_c0": 0.8733,
+   "n_d": 0.026,
+   "dep_uc": 5.0043,
+   "dep_tau": 281.297,
+   "erosion_k": 0.0038
+  }
+ },
+ {
+  "run": "sw1_06",
+  "params": {
+   "n_w": 0.0342,
+   "release_c0": 0.8985,
+   "n_d": 0.0175,
+   "dep_uc": 3.6563,
+   "dep_tau": 434.6465,
+   "erosion_k": 0.003
+  }
+ },
+ {
+  "run": "sw1_07",
+  "params": {
+   "n_w": 0.0296,
+   "release_c0": 0.9934,
+   "n_d": 0.0283,
+   "dep_uc": 2.827,
+   "dep_tau": 2114.8199,
+   "erosion_k": 0.0023
+  }
+ },
+ {
+  "run": "sw1_08",
+  "params": {
+   "n_w": 0.0328,
+   "release_c0": 0.7284,
+   "n_d": 0.029,
+   "dep_uc": 2.3416,
+   "dep_tau": 1700.3585,
+   "erosion_k": 0.0068
+  }
+ },
+ {
+  "run": "sw1_09",
+  "params": {
+   "n_w": 0.0275,
+   "release_c0": 0.7751,
+   "n_d": 0.0213,
+   "dep_uc": 2.6649,
+   "dep_tau": 621.4108,
+   "erosion_k": 0.0024
+  }
+ },
+ {
+  "run": "sw1_10",
+  "params": {
+   "n_w": 0.0219,
+   "release_c0": 0.9206,
+   "n_d": 0.0142,
+   "dep_uc": 4.5249,
+   "dep_tau": 2399.7299,
+   "erosion_k": 0.0083
+  }
+ },
+ {
+  "run": "sw1_11",
+  "params": {
+   "n_w": 0.028,
+   "release_c0": 0.709,
+   "n_d": 0.023,
+   "dep_uc": 1.5949,
+   "dep_tau": 245.4315,
+   "erosion_k": 0.0057
+  }
+ },
+ {
+  "run": "sw1_12",
+  "params": {
+   "n_w": 0.0266,
+   "release_c0": 0.7604,
+   "n_d": 0.0156,
+   "dep_uc": 3.8972,
+   "dep_tau": 330.9171,
+   "erosion_k": 0.0095
+  }
+ },
+ {
+  "run": "sw1_13",
+  "params": {
+   "n_w": 0.022,
+   "release_c0": 0.966,
+   "n_d": 0.0198,
+   "dep_uc": 5.3053,
+   "dep_tau": 202.6855,
+   "erosion_k": 0.0028
+  }
+ },
+ {
+  "run": "sw1_14",
+  "params": {
+   "n_w": 0.0226,
+   "release_c0": 0.9402,
+   "n_d": 0.0124,
+   "dep_uc": 2.2066,
+   "dep_tau": 414.863,
+   "erosion_k": 0.0048
+  }
+ },
+ {
+  "run": "sw1_15",
+  "params": {
+   "n_w": 0.0237,
+   "release_c0": 0.7955,
+   "n_d": 0.0294,
+   "dep_uc": 4.0361,
+   "dep_tau": 813.0527,
+   "erosion_k": 0.0063
+  }
+ },
+ {
+  "run": "sw1_16",
+  "params": {
+   "n_w": 0.0253,
+   "release_c0": 0.8226,
+   "n_d": 0.0247,
+   "dep_uc": 5.0904,
+   "dep_tau": 1114.825,
+   "erosion_k": 0.0025
+  }
+ },
+ {
+  "run": "sw1_17",
+  "params": {
+   "n_w": 0.0201,
+   "release_c0": 0.837,
+   "n_d": 0.0219,
+   "dep_uc": 5.9934,
+   "dep_tau": 926.4805,
+   "erosion_k": 0.0027
+  }
+ },
+ {
+  "run": "sw1_18",
+  "params": {
+   "n_w": 0.026,
+   "release_c0": 0.8519,
+   "n_d": 0.0167,
+   "dep_uc": 5.7003,
+   "dep_tau": 212.7821,
+   "erosion_k": 0.0035
+  }
+ },
+ {
+  "run": "sw1_19",
+  "params": {
+   "n_w": 0.0292,
+   "release_c0": 0.7185,
+   "n_d": 0.0188,
+   "dep_uc": 4.3679,
+   "dep_tau": 177.2884,
+   "erosion_k": 0.0093
+  }
+ },
+ {
+  "run": "sw1_20",
+  "params": {
+   "n_w": 0.0316,
+   "release_c0": 0.9862,
+   "n_d": 0.0159,
+   "dep_uc": 4.8463,
+   "dep_tau": 558.0025,
+   "erosion_k": 0.0062
+  }
+ },
+ {
+  "run": "sw1_21",
+  "params": {
+   "n_w": 0.0287,
+   "release_c0": 0.9303,
+   "n_d": 0.0133,
+   "dep_uc": 3.2108,
+   "dep_tau": 1267.993,
+   "erosion_k": 0.0054
+  }
+ },
+ {
+  "run": "sw1_22",
+  "params": {
+   "n_w": 0.0238,
+   "release_c0": 0.7449,
+   "n_d": 0.0208,
+   "dep_uc": 3.1375,
+   "dep_tau": 683.4801,
+   "erosion_k": 0.008
+  }
+ },
+ {
+  "run": "sw1_23",
+  "params": {
+   "n_w": 0.0322,
+   "release_c0": 0.8003,
+   "n_d": 0.0248,
+   "dep_uc": 3.4102,
+   "dep_tau": 1382.0268,
+   "erosion_k": 0.0041
+  }
+ }
+]

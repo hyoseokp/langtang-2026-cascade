@@ -1,0 +1,22 @@
+[
+{
+"run": "vol60_s0.5",
+"args": "--restart runs/spinup60s_c/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 28800 --frame-dt 60 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 0.5"
+},
+{
+"run": "vol60_s0.75",
+"args": "--restart runs/spinup60s_c/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 28800 --frame-dt 60 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 0.75"
+},
+{
+"run": "vol60_s1.5",
+"args": "--restart runs/spinup60s_c/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 28800 --frame-dt 60 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 1.5"
+},
+{
+"run": "vol60_s2",
+"args": "--restart runs/spinup60s_c/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 28800 --frame-dt 60 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 2"
+},
+{
+"run": "vol60_s3",
+"args": "--restart runs/spinup60s_c/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 28800 --frame-dt 60 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 3"
+}
+]

@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper and this repository."
+title: "Langtang 2026 rock-ice avalanche to 180-km flood: reconstruction code"
+version: "1.0.0"
+date-released: "2026-09-07"
+license: MIT
+repository-code: "https://github.com/hyoseokp/langtang-2026-cascade"
+authors:
+  - family-names: Park
+    given-names: Hyoseok
+    email: phs137@o.cnu.ac.kr
+    affiliation: "Department of Physics, Chungnam National University"
+keywords:
+  - rock-ice avalanche
+  - debris flow
+  - shallow-water model
+  - flood reconstruction
+  - Langtang
+  - Nepal

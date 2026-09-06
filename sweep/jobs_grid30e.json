@@ -1,0 +1,82 @@
+[
+{
+"run": "grid30e_m0_n0.02",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0 --n-w 0.02 --n-d 0.02"
+},
+{
+"run": "grid30e_m0_n0.025",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0 --n-w 0.025 --n-d 0.025"
+},
+{
+"run": "grid30e_m0_n0.03",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0 --n-w 0.03 --n-d 0.03"
+},
+{
+"run": "grid30e_m0_n0.035",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0 --n-w 0.035 --n-d 0.035"
+},
+{
+"run": "grid30e_m0.002_n0.02",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.002 --n-w 0.02 --n-d 0.02"
+},
+{
+"run": "grid30e_m0.002_n0.025",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.002 --n-w 0.025 --n-d 0.025"
+},
+{
+"run": "grid30e_m0.002_n0.03",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.002 --n-w 0.03 --n-d 0.03"
+},
+{
+"run": "grid30e_m0.002_n0.035",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.002 --n-w 0.035 --n-d 0.035"
+},
+{
+"run": "grid30e_m0.005_n0.02",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.005 --n-w 0.02 --n-d 0.02"
+},
+{
+"run": "grid30e_m0.005_n0.025",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.005 --n-w 0.025 --n-d 0.025"
+},
+{
+"run": "grid30e_m0.005_n0.03",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.005 --n-w 0.03 --n-d 0.03"
+},
+{
+"run": "grid30e_m0.005_n0.035",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.005 --n-w 0.035 --n-d 0.035"
+},
+{
+"run": "grid30e_m0.01_n0.02",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.01 --n-w 0.02 --n-d 0.02"
+},
+{
+"run": "grid30e_m0.01_n0.025",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.01 --n-w 0.025 --n-d 0.025"
+},
+{
+"run": "grid30e_m0.01_n0.03",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.01 --n-w 0.03 --n-d 0.03"
+},
+{
+"run": "grid30e_m0.01_n0.035",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.01 --n-w 0.035 --n-d 0.035"
+},
+{
+"run": "grid30e_m0.02_n0.02",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.02 --n-w 0.02 --n-d 0.02"
+},
+{
+"run": "grid30e_m0.02_n0.025",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.02 --n-w 0.025 --n-d 0.025"
+},
+{
+"run": "grid30e_m0.02_n0.03",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.02 --n-w 0.03 --n-d 0.03"
+},
+{
+"run": "grid30e_m0.02_n0.035",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-ice-fraction 0.2 --release-duration 30 --melt-eff 1.0 --melt-energy --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 3600 --frame-dt 60 --dep-uc 1.833 --dep-tau 337 --mu-s 0.02 --n-w 0.035 --n-d 0.035"
+}
+]

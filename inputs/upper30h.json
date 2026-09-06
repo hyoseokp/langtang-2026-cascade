@@ -1,0 +1,110 @@
+{
+  "tag": "upper30h",
+  "cell_m": 30.0,
+  "rows": 921,
+  "cols": 882,
+  "extent_utm45n": [
+    330600.0,
+    357060.0,
+    3110670.0,
+    3138300.0
+  ],
+  "crs": "EPSG:32645",
+  "vertical_datum": "EGM2008",
+  "dem_source": "D://langtang_flood_anim//upstream_copy//data_processed//terrain//full_reconstruction_utm45n_egm2008.tif",
+  "dem_sha256": "8cdfbdad6f11d1a4ecc4f97566f9880cbf9b23caa3d6be95e10438225cc0d276",
+  "dem_nan_cells_replaced": 0,
+  "simulation_bed": "raw DSM breached along priority-flood D8 receivers with minimum slope 0.0005; raw DSM kept as z_raw",
+  "pit_fill_cells_diagnostic": 5205,
+  "pit_fill_volume_m3_diagnostic": 57876831.233795196,
+  "pit_fill_max_m_diagnostic": 110.00925781250407,
+  "carve_cells": 4165,
+  "carve_volume_m3": 20444775.19628986,
+  "carve_max_m": 34.039306640625,
+  "min_slope": 0.0005,
+  "source_polygon": "D://langtang_flood_anim//upstream_copy//data_processed//source//unosat_4260//detachment_zone_utm45n.geojson",
+  "source_sha256": "7a5d62f06bc88e3d69c917ca38f4ae1c62fa9c20a2dca4ef3782befa4d66ad54",
+  "source_volume_m3": 35420000.0,
+  "source_cells": 2174,
+  "source_area_m2": 1956600.0,
+  "source_thickness_m": 18.102831442297862,
+  "source_elevation_range_m": [
+    3931.463134765625,
+    5175.064453125
+  ],
+  "external_inflows": [
+    {
+      "name": "bhote_koshi_tibet",
+      "row": 271,
+      "col": 318,
+      "q_m3_s": 150.0,
+      "lon": 85.36962086941641,
+      "lat": 28.295856045365742,
+      "edge_elevation_m": 2759.08935546875,
+      "d8_path_reaches_devghat": true,
+      "moved_to_active": true
+    }
+  ],
+  "galchhi_in_domain_catchment_m2": NaN,
+  "uniform_runoff_m_s": 1.565972222222222e-07,
+  "channel_threshold_km2": 2.0,
+  "stations": {
+    "usgs_main_onset": {
+      "label": "Seismic origin",
+      "lon": 85.515,
+      "lat": 28.271,
+      "x": 354348.90663274715,
+      "y": 3128117.1527675427,
+      "row": 339,
+      "col": 791,
+      "start_utc": "2026-08-26T02:52:10Z",
+      "end_utc": "2026-08-26T02:52:10Z"
+    },
+    "gyirong_cctv_arrival": {
+      "label": "Gyirong CCTV",
+      "lon": 85.377931,
+      "lat": 28.279341,
+      "x": 340915.45499398885,
+      "y": 3129214.0918315416,
+      "row": 312,
+      "col": 339,
+      "start_utc": "2026-08-26T02:59:53Z",
+      "end_utc": "2026-08-26T02:59:53Z"
+    },
+    "rasuwagadhi_signal_loss": {
+      "label": "Rasuwagadhi",
+      "lon": 85.377649,
+      "lat": 28.271297,
+      "x": 340875.83513844316,
+      "y": 3128323.15372186,
+      "row": 342,
+      "col": 337,
+      "start_utc": "2026-08-26T02:55:00Z",
+      "end_utc": "2026-08-26T03:05:00Z"
+    },
+    "syabrubesi_signal_loss": {
+      "label": "Syabrubesi",
+      "lon": 85.342554,
+      "lat": 28.17065,
+      "x": 337280.50816100405,
+      "y": 3117217.6972407303,
+      "row": 712,
+      "col": 221,
+      "start_utc": "2026-08-26T03:05:00Z",
+      "end_utc": "2026-08-26T03:15:00Z"
+    }
+  },
+  "route_length_m": 181973.3642967734,
+  "onset_utc": "2026-08-26T02:52:10Z",
+  "assumptions": [
+    "Single-layer mixture shallow-water model; no phase separation, melt or entrainment.",
+    "Source thickness uniform over the UNOSAT detachment zone at the QHNU 35.42 Mm3 volume.",
+    "Baseflow: uniform in-domain runoff scaled to 450 m3/s at Galchhi plus four boundary inflows;",
+    "boundary discharges are conditional monsoon assumptions, not measurements."
+  ],
+  "active_cells": 130591,
+  "active_fraction": 0.16076260399201303,
+  "active_band_m": 600.0,
+  "runoff_rerouted_m3_s": 0.0,
+  "runoff_lost_outside_m3_s": 4.988060018280521
+}

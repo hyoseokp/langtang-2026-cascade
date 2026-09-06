@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+runs/
+figures/
+inputs/*.npz
+inputs/*.tif
+*.mp4
+*.npz
+*.tif

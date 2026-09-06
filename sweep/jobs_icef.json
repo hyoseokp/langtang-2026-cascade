@@ -1,0 +1,26 @@
+[
+{
+"run": "icef_m0_i0.1",
+"args": "--restart runs/spinup60s_c/final_state.npz --release --release-c0 1.0 --release-duration 30 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 28800 --frame-dt 60 --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-ice-fraction 0.1"
+},
+{
+"run": "icef_m0_i0.3",
+"args": "--restart runs/spinup60s_c/final_state.npz --release --release-c0 1.0 --release-duration 30 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 28800 --frame-dt 60 --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-ice-fraction 0.3"
+},
+{
+"run": "icef_m0_i0.4",
+"args": "--restart runs/spinup60s_c/final_state.npz --release --release-c0 1.0 --release-duration 30 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 28800 --frame-dt 60 --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-ice-fraction 0.4"
+},
+{
+"run": "icef_m0_i0.5",
+"args": "--restart runs/spinup60s_c/final_state.npz --release --release-c0 1.0 --release-duration 30 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 28800 --frame-dt 60 --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-ice-fraction 0.5"
+},
+{
+"run": "icef_m0_i0.65",
+"args": "--restart runs/spinup60s_c/final_state.npz --release --release-c0 1.0 --release-duration 30 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 28800 --frame-dt 60 --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-ice-fraction 0.65"
+},
+{
+"run": "icef_m0_i0.8",
+"args": "--restart runs/spinup60s_c/final_state.npz --release --release-c0 1.0 --release-duration 30 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 28800 --frame-dt 60 --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-ice-fraction 0.8"
+}
+]

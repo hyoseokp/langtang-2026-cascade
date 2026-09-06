@@ -1,0 +1,98 @@
+[
+{
+"run": "fvf30_s0.5_i0.1",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 0.5 --release-ice-fraction 0.1"
+},
+{
+"run": "fvf30_s0.75_i0.1",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 0.75 --release-ice-fraction 0.1"
+},
+{
+"run": "fvf30_s1_i0.1",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 1 --release-ice-fraction 0.1"
+},
+{
+"run": "fvf30_s1.5_i0.1",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 1.5 --release-ice-fraction 0.1"
+},
+{
+"run": "fvf30_s2_i0.1",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 2 --release-ice-fraction 0.1"
+},
+{
+"run": "fvf30_s3_i0.1",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 3 --release-ice-fraction 0.1"
+},
+{
+"run": "fvf30_s0.5_i0.2",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 0.5 --release-ice-fraction 0.2"
+},
+{
+"run": "fvf30_s0.75_i0.2",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 0.75 --release-ice-fraction 0.2"
+},
+{
+"run": "fvf30_s1_i0.2",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 1 --release-ice-fraction 0.2"
+},
+{
+"run": "fvf30_s1.5_i0.2",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 1.5 --release-ice-fraction 0.2"
+},
+{
+"run": "fvf30_s2_i0.2",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 2 --release-ice-fraction 0.2"
+},
+{
+"run": "fvf30_s3_i0.2",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 3 --release-ice-fraction 0.2"
+},
+{
+"run": "fvf30_s0.5_i0.3",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 0.5 --release-ice-fraction 0.3"
+},
+{
+"run": "fvf30_s0.75_i0.3",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 0.75 --release-ice-fraction 0.3"
+},
+{
+"run": "fvf30_s1_i0.3",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 1 --release-ice-fraction 0.3"
+},
+{
+"run": "fvf30_s1.5_i0.3",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 1.5 --release-ice-fraction 0.3"
+},
+{
+"run": "fvf30_s2_i0.3",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 2 --release-ice-fraction 0.3"
+},
+{
+"run": "fvf30_s3_i0.3",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 3 --release-ice-fraction 0.3"
+},
+{
+"run": "fvf30_s0.5_i0.5",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 0.5 --release-ice-fraction 0.5"
+},
+{
+"run": "fvf30_s0.75_i0.5",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 0.75 --release-ice-fraction 0.5"
+},
+{
+"run": "fvf30_s1_i0.5",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 1 --release-ice-fraction 0.5"
+},
+{
+"run": "fvf30_s1.5_i0.5",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 1.5 --release-ice-fraction 0.5"
+},
+{
+"run": "fvf30_s2_i0.5",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 2 --release-ice-fraction 0.5"
+},
+{
+"run": "fvf30_s3_i0.5",
+"args": "--restart runs/u30h_spinup/final_state.npz --release --release-c0 1.0 --release-duration 30 --release-speed 150 --melt-eff 1.0 --melt-energy --rock-temp-c 3 --q-air 300 --erosion-k 0.0074 --erosion-uc 6.0 --erodible-depth 5.0 --t-end 900 --frame-dt 5 --save-frames --mu-s 0 --n-w 0.0208 --n-d 0.0145 --dep-uc 1.833 --dep-tau 337 --release-volume-scale 3 --release-ice-fraction 0.5"
+}
+]

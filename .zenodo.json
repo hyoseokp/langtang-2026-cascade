@@ -1,0 +1,9 @@
+{
+  "title": "Langtang 2026 rock-ice avalanche to 180-km flood: reconstruction code",
+  "description": "Mixture shallow-water solver (PyTorch), two-phase test solver, 1-D routing, inversion scripts, figure and animation code behind the reconstruction of the 26 August 2026 Langtang cascade, with the parameter sets of every sweep and the observation registry.",
+  "creators": [{"name": "Park, Hyoseok", "affiliation": "Department of Physics, Chungnam National University"}],
+  "license": "MIT",
+  "upload_type": "software",
+  "keywords": ["rock-ice avalanche", "debris flow", "shallow-water model", "flood reconstruction", "Langtang", "Nepal"],
+  "access_right": "open"
+}
