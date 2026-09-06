@@ -1,5 +1,13 @@
 # Langtang 2026 rock–ice avalanche to 180-km flood: reconstruction code
 
+[![EarthArXiv preprint](https://img.shields.io/badge/EarthArXiv-10.31223%2FX5250R-blue)](https://doi.org/10.31223/X5250R)
+[![Zenodo code](https://img.shields.io/badge/Zenodo-code%20archive-blue)](https://doi.org/10.5281/zenodo.22549896)
+[![Zenodo data and animations](https://img.shields.io/badge/Zenodo-data%20%26%20animations-blue)](https://doi.org/10.5281/zenodo.22549201)
+
+**Preprint:** [Read on EarthArXiv](https://eartharxiv.org/repository/view/14849/) · **Code archive:** [10.5281/zenodo.22549896](https://doi.org/10.5281/zenodo.22549896) · **Data and videos:** [10.5281/zenodo.22549201](https://doi.org/10.5281/zenodo.22549201)
+
+**Topics:** rock-ice avalanche, debris flow, landslides, flood modelling, numerical simulation, Himalaya, Nepal, Langtang.
+
 Code, run definitions and small registry files behind the paper
 *A rock–ice avalanche without yield strength caused the 2026 Bhote Koshi–Trishuli flood, Nepal* (preprint)
 (H. Park, Chungnam National University).
