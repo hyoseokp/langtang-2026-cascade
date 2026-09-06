@@ -109,7 +109,7 @@ def run(a):
     def depth(A):
         return np.where(A <= W * hb, A / W, hb + (A - W * hb) / (W + Wfp))
 
-    out_rows = []; t = -a.spin; next_out = 0.0; deposited = 0.0
+    out_rows = []; t = -a.spin; next_out = 0.0; deposited = 0.0; zb0 = zb.copy(); prof_h = []; prof_c = []
     while t < a.t_end:
         c = np.clip(hc / np.maximum(h, 1e-3), 0, 1)
         smax = np.max(np.abs(u) + np.sqrt(G * h)); dt = min(a.cfl * dx.min() / max(smax, 1e-6), 5.0, a.t_end - t)
@@ -152,9 +152,10 @@ def run(a):
             for key, j in stations.items():
                 row[f"{key}_Q"] = float(W[j] * h[j] * u[j]); row[f"{key}_Qdebris"] = float(W[j] * hc[j] * u[j])
                 row[f"{key}_stage"] = float(zb[j] + h[j]); row[f"{key}_hmax"] = float(h[j]); row[f"{key}_cmax"] = float(cn[j]); row[f"{key}_wet_width_m"] = float(W[j])
-            out_rows.append(row); next_out += a.frame_dt
+            out_rows.append(row); next_out += a.frame_dt; prof_h.append(h.astype(np.float32)); prof_c.append(cn.astype(np.float32))
     out = ROOT / "runs" / a.out; out.mkdir(parents=True, exist_ok=True)
     df = pd.DataFrame(out_rows); df.to_csv(out / "series.csv", index=False)
+    np.savez_compressed(out / "profile.npz", s_m=chain, zb0=zb0, dz=zb - zb0, W=W, time_s=df.time_s.to_numpy(), h=np.array(prof_h), c=np.array(prof_c))
     json.dump({"args": vars(a), "entrained_m3": 0.0, "deposited_m3": deposited, "stations_km": {k: float(chain[j] / 1e3) for k, j in stations.items()},
                "inflows": [(float(chain[j] / 1e3), q, nm) for j, q, nm in ext]}, (out / "result.json").open("w"), indent=1)
     for key, j in stations.items():

@@ -118,13 +118,18 @@ def render_one(args):
         from scipy.ndimage import median_filter
         k = ctx["smooth"]; h = median_filter(h, size=k, mode="nearest"); c = median_filter(c, size=k, mode="nearest"); dep = median_filter(dep, size=k, mode="nearest")
     x, bed0, hb = ctx["chain"], ctx["bed"], ctx["h_base"]
+    r = ctx.get("r1d")
+    if r is not None:  # below the routing start station: the 1-D compound-section routing replaces the 2-D corridor state
+        sel, s_at = r["sel"], r["s_at"]; k = int(np.argmin(np.abs(r["t"] - t)))
+        h = h.copy(); c = c.copy(); dep = dep.copy(); dz = dz.copy()
+        h[sel] = np.interp(s_at, r["s"], r["h"][k]); c[sel] = np.interp(s_at, r["s"], r["c"][k]); dep[sel] = 0.0; dz[sel] = 0.0
     ex = ctx["exag"]
     bed = bed0 + dz * ex  # scoured thalweg (exaggerated like the flow)
     clock = (ONSET_UTC + timedelta(seconds=t)).astimezone(NPT)
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(16, 8.5), dpi=ctx["dpi"], gridspec_kw={"height_ratios": [2.2, 1]})
     fig.subplots_adjust(left=0.06, right=0.98, top=0.9, bottom=0.08, hspace=0.25)
     ax1.fill_between(x, ctx["zmin"], bed, color="#6b6b6b", lw=0)
-    ax1.fill_between(x, bed, bed + dep * ex, where=dep > 0, color=(0.55, 0.35, 0.15), lw=0, label=f"deposited solids, valley floor (x{ex:g})")
+    ax1.fill_between(x, bed, bed + dep * ex, where=dep > 0, facecolor=(0.3, 0.16, 0.05), edgecolor="k", hatch="///", lw=0, label=f"deposited solids, valley floor (x{ex:g})")
     ax1.fill_between(x, bed, bed + hb * ex, color=(0.55, 0.65, 0.75), lw=0, label=f"pre-event river (x{ex:g})")
     surf = bed + h * ex
     pts = np.array([x, surf]).T.reshape(-1, 1, 2)
@@ -140,15 +145,18 @@ def render_one(args):
         ax1.text(s["chainage_km"], ctx["zmax"] - 0.04 * (ctx["zmax"] - ctx["zmin"]), s["label"], rotation=90, va="top",
                  ha="right", fontsize=8)
     ax1.axvline(ctx["join_km"], color="grey", lw=0.5)
+    if r is not None:
+        x0 = x[r["sel"]][0]; ax1.axvline(x0, color="k", lw=0.8, ls="--"); ax2.axvline(x0, color="k", lw=0.8, ls="--")
+        ax1.text(x0 + 1, ctx["zmin"] + 0.06 * (ctx["zmax"] - ctx["zmin"]), "below: 1-D routing, compound section (channel + valley-floor storage)", fontsize=7)
     ax1.set_title(f"{ctx['label']}\nt = {t:.0f} s ({t/3600:.2f} h) | {clock:%H:%M:%S} NPT | longitudinal profile: source -> Rasuwagadhi (observed corridor) -> Devghat (mapped route)", fontsize=10)
     ax1.legend(loc="upper right", fontsize=8)
-    ax2.fill_between(x, 0, h, color=(0.6, 0.6, 0.6), lw=0, label="flow depth (true scale)")
-    ax2.fill_between(x, 0, h * c, color=DEBRIS_RGB, lw=0, label="solids depth h*c")
-    ax2.fill_between(x, 0, dep, color=(0.55, 0.35, 0.15), alpha=0.7, lw=0, label="deposit thickness (valley floor)")
+    rise = np.maximum(h + dz - hb, 0.0)  # water-surface rise above the pre-event level (true scale; dz = thalweg scour)
+    ax2.fill_between(x, 0, rise, color=(0.6, 0.6, 0.6), lw=0, label="rise above pre-event level (true scale)")
+    ax2.fill_between(x, 0, np.minimum(h * c, rise), color=DEBRIS_RGB, lw=0, label="of which solids, h*c")
+    ax2.fill_between(x, 0, dep, facecolor=(0.3, 0.16, 0.05), edgecolor="k", hatch="///", lw=0, label="deposit thickness (settled, valley floor)")
     ax2.plot(x, -dz, color=(0.3, 0.2, 0.1), lw=0.6, label="channel scour depth")
-    ax2.plot(x, hb, color=(0.35, 0.55, 0.85), lw=0.8, label="pre-event depth")
     ax2.set_ylim(0, ctx["hmax"]); ax2.set_xlim(x[0], x[-1])
-    ax2.set_xlabel("chainage along corridor (km)"); ax2.set_ylabel("depth (m)")
+    ax2.set_xlabel("chainage along corridor (km)"); ax2.set_ylabel("rise above pre-event level (m)")
     for key, s in ctx["stations"].items():
         ax2.axvline(s["chainage_km"], color="k", lw=0.6, ls=":")
         if key in OBS:
@@ -172,6 +180,7 @@ def main() -> None:
     p.add_argument("--every", type=int, default=1)
     p.add_argument("--xmax", type=float, default=0.0, help="cut the profile at this chainage (km); 0 = full")
     p.add_argument("--smooth", type=int, default=0, help="median filter (cells) applied along the profile to depths for display (DSM pit artefacts)")
+    p.add_argument("--route1d", default="", help="run id of a route1d routing (profile.npz) shown below its start station instead of the 2-D state")
     a = p.parse_args()
     inp = np.load(ROOT / "inputs" / f"{a.tag}.npz"); meta = json.loads((ROOT / "inputs" / f"{a.tag}.json").read_text("utf-8"))
     z = inp["z"].astype(np.float32)
@@ -184,6 +193,15 @@ def main() -> None:
     if a.smooth > 1:
         from scipy.ndimage import median_filter
         hb = median_filter(hb, size=a.smooth, mode="nearest")
+    r1d = None
+    if a.route1d:
+        pr = np.load(ROOT / "runs" / a.route1d / "profile.npz"); res = json.loads((ROOT / "runs" / a.route1d / "result.json").read_text("utf-8"))
+        start = res["args"]["start"]; skm = res["stations_km"]
+        keys = [k for k in skm if k in stations]; xs = np.array([stations[start]["chainage_km"]] + [stations[k]["chainage_km"] for k in keys]); ss = np.array([0.0] + [skm[k] * 1e3 for k in keys])
+        o = np.argsort(xs); xs, ss = xs[o], ss[o]
+        sel = chain >= stations[start]["chainage_km"]; s_at = np.maximum(np.interp(chain[sel], xs, ss), 660.0)  # skip the mass-source cells of the 1-D model
+        r1d = {"sel": sel, "s_at": s_at, "s": pr["s_m"], "t": pr["time_s"], "h": pr["h"], "c": pr["c"]}
+        hb = hb.copy(); hb[sel] = np.interp(s_at, pr["s_m"], pr["h"][0])
     frames = sorted((ROOT / "runs" / a.run_id / "frames").glob("frame_*.npz"))[::a.every]
     hmax = 1.0
     for fp in frames[::max(1, len(frames) // 12)]:
@@ -191,7 +209,7 @@ def main() -> None:
     out = ROOT / "figures" / "animations" / a.run_id / "profile"; out.mkdir(parents=True, exist_ok=True)
     ctx = {"chain": chain, "bed": bed, "nb": nb, "n_cells": z.size, "h_base": hb, "stations": stations, "join_km": join_km,
            "exag": a.exag, "smooth": a.smooth, "zmin": float(bed.min()) - 100, "zmax": float(bed.max()) + 300, "hmax": hmax * 1.05,
-           "label": a.label, "dpi": a.dpi, "out": out}
+           "label": a.label, "dpi": a.dpi, "out": out, "r1d": r1d}
     with Pool(a.workers, initializer=_init, initargs=(ctx,)) as pool:
         for i, _ in enumerate(pool.imap_unordered(render_one, list(enumerate(frames)), chunksize=4)):
             if i % 40 == 0:
