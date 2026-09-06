@@ -30,10 +30,11 @@ def autocrop(im: Image.Image, pad: int = 10) -> Image.Image:
 def main() -> None:
     p = argparse.ArgumentParser(); p.add_argument("--run", default="hiresN"); p.add_argument("--frame-dt", type=float, default=10.0)
     p.add_argument("--frames", type=int, nargs=3, default=[40, 120, 360]); p.add_argument("--out", default="fig_upper_grid.png")
+    p.add_argument("--view", default="upper", help="view key of the animation panels: upper or full")
     a = p.parse_args()
     base = ROOT / "figures" / "animations" / a.run / "paper"
-    views = [("upper_oblique_{:05d}.png", "oblique view"), ("upper_top_{:05d}.png", "top view"), ("p_{:05d}.png", "longitudinal profile")]
-    labels = [f"{f * a.frame_dt:.0f} s" for f in a.frames]
+    views = [(a.view + "_oblique_{:05d}.png", "oblique view"), (a.view + "_top_{:05d}.png", "top view"), ("p_{:05d}.png", "longitudinal profile")]
+    labels = [(f"{f * a.frame_dt:.0f} s" if f * a.frame_dt < 3600 else f"{f * a.frame_dt / 3600:g} h") for f in a.frames]
     ims = [[autocrop(Image.open(base / pat.format(f))) for f in a.frames] for pat, _ in views]
     ratios = [max(im.height / im.width for im in row) for row in ims]
     fig = plt.figure(figsize=(18, 6 * sum(ratios) + 2.4), dpi=170)

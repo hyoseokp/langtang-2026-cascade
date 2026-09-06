@@ -117,7 +117,7 @@ def render_one(args):
     h, c, dz, dep = sample(fr, ctx["nb"], ctx["n_cells"])  # dz: thalweg scour (<=0); dep: median deposit over the 3x3 (>=0; single-cell piles do not spike)
     if ctx.get("smooth", 0) > 1:
         from scipy.ndimage import median_filter
-        k = ctx["smooth"]; h = median_filter(h, size=k, mode="nearest"); c = median_filter(c, size=k, mode="nearest"); dep = median_filter(dep, size=k, mode="nearest")
+        k = ctx["smooth"]; h = median_filter(h, size=k, mode="nearest"); c = median_filter(c, size=k, mode="nearest"); dep = median_filter(dep, size=k, mode="nearest"); dz = median_filter(dz, size=k, mode="nearest")
     x, bed0, hb = ctx["chain"], ctx["bed"], ctx["h_base"]
     r = ctx.get("r1d")
     if r is not None:  # below the routing start station: the 1-D compound-section routing replaces the 2-D corridor state
@@ -194,6 +194,7 @@ def main() -> None:
     p.add_argument("--smooth", type=int, default=0, help="median filter (cells) applied along the profile to depths for display (DSM pit artefacts)")
     p.add_argument("--route1d", default="", help="run id of a route1d routing (profile.npz) shown below its start station instead of the 2-D state")
     p.add_argument("--paper-frames", default="", help="comma-separated frame indices: render only these as clean paper panels (no video)")
+    p.add_argument("--hmax", type=float, default=0.0, help="fixed upper limit of the rise panel (m); 0 = from the frames")
     a = p.parse_args()
     inp = np.load(ROOT / "inputs" / f"{a.tag}.npz"); meta = json.loads((ROOT / "inputs" / f"{a.tag}.json").read_text("utf-8"))
     z = inp["z"].astype(np.float32)
@@ -221,7 +222,7 @@ def main() -> None:
         h = sample(np.load(fp), nb, z.size)[0]; hmax = max(hmax, float(h.max()))
     out = ROOT / "figures" / "animations" / a.run_id / "profile"; out.mkdir(parents=True, exist_ok=True)
     ctx = {"chain": chain, "bed": bed, "nb": nb, "n_cells": z.size, "h_base": hb, "stations": stations, "join_km": join_km,
-           "exag": a.exag, "smooth": a.smooth, "zmin": float(bed.min()) - 100, "zmax": float(bed.max()) + 300, "hmax": hmax * 1.05,
+           "exag": a.exag, "smooth": a.smooth, "zmin": float(bed.min()) - 100, "zmax": float(bed.max()) + 300, "hmax": a.hmax if a.hmax > 0 else hmax * 1.05,
            "label": a.label, "dpi": a.dpi, "out": out, "r1d": r1d}
     if a.paper_frames:
         ctx["clean"] = True; ctx["out"] = out.parent / "paper"; ctx["out"].mkdir(parents=True, exist_ok=True); _init(ctx)
