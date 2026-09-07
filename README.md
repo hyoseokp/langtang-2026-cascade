@@ -2,9 +2,9 @@
 
 [![EarthArXiv preprint](https://img.shields.io/badge/EarthArXiv-10.31223%2FX5250R-blue)](https://doi.org/10.31223/X5250R)
 [![Zenodo code](https://img.shields.io/badge/Zenodo-code%20archive-blue)](https://doi.org/10.5281/zenodo.22549896)
-[![Zenodo data and animations](https://img.shields.io/badge/Zenodo-data%20%26%20animations-blue)](https://doi.org/10.5281/zenodo.22549201)
+[![Zenodo revised animations](https://img.shields.io/badge/Zenodo-revised%20animations-blue)](https://doi.org/10.5281/zenodo.22549200)
 
-**Preprint:** [Read on EarthArXiv](https://eartharxiv.org/repository/view/14849/) · **Code archive:** [10.5281/zenodo.22549896](https://doi.org/10.5281/zenodo.22549896) · **Data and videos:** [10.5281/zenodo.22549201](https://doi.org/10.5281/zenodo.22549201)
+**Preprint:** [Read on EarthArXiv](https://eartharxiv.org/repository/view/14849/) · **Code archive:** [10.5281/zenodo.22549896](https://doi.org/10.5281/zenodo.22549896) · **Revised videos:** [v2.0.0](https://doi.org/10.5281/zenodo.22566624) · **Original data:** [v1](https://doi.org/10.5281/zenodo.22549201)
 
 **Topics:** rock-ice avalanche, debris flow, landslides, flood modelling, numerical simulation, Himalaya, Nepal, Langtang.
 
@@ -23,24 +23,28 @@ elevation-change rasters, the stored run outputs and the rendered videos) are no
 
 **Figure 1. The release crossing the gorge.** From the revised manuscript submitted to *Landslides*. The corrected 60 m corridor reconstruction is shown at 420, 1200 and 3600 s. Orange denotes solids-rich mixture and blue denotes diluted flood water. Flow depth is exaggerated fourfold in the oblique views and eightfold in the upper longitudinal profiles. Stage change in the lower profiles is shown at true scale. This is a model prediction, not an observed inundation map. Click the figure to open the full-resolution image.
 
-## Watch the archived animations
+## Watch the revised animations
 
-[**Open the animation and data archive on Zenodo**](https://doi.org/10.5281/zenodo.22549201)
+[**Open the revised animation archive on Zenodo (v2.0.0)**](https://doi.org/10.5281/zenodo.22566624)
 
-These animations accompany the original reconstruction. They have not been regenerated for the revised manuscript submitted to *Landslides*, titled *A rock-ice avalanche and the 2026 Bhote Koshi-Trishuli flood, Nepal*. They should not be used as quantitative visualizations of the revised solver or the selected downstream routing case.
+All six animations were regenerated from the corrected model on 7 September 2026 for the revised manuscript submitted to *Landslides*, *A rock-ice avalanche and the 2026 Bhote Koshi-Trishuli flood, Nepal*. They use source material added at rest and mass-conserving melting. These are model outputs, not event footage.
 
-Select a video below to open the MP4. Depending on your browser, the file will play in a new page or download. The time intervals refer to simulation output sampling, not playback duration.
+The upper videos show the 30 m reference calculation repeated with 5 s saved states over its first 24 minutes. Playback duration is approximately 25 seconds. Full-corridor plan and oblique views show the corrected 60 m two-dimensional model. The full-corridor profile uses the selected compound-section routing (`route_b2_w1`) below Syabrubesi. The maps and profile are distinct downstream model representations, as explained in the manuscript. Display exaggeration is marked in the videos.
+
+Select a video below to open the MP4. Depending on your browser, the file will play or download. The intervals refer to saved simulation states, not playback duration.
 
 | Area | View | Simulation interval | Video |
 |---|---|---|---|
-| Gorge | Oblique 3-D | 10 s | [Open MP4](https://zenodo.org/api/records/22549201/files/animation_gorge_oblique_10s.mp4/content) |
-| Gorge | Plan view | 10 s | [Open MP4](https://zenodo.org/api/records/22549201/files/animation_gorge_top_10s.mp4/content) |
-| Gorge | Longitudinal profile | 10 s | [Open MP4](https://zenodo.org/api/records/22549201/files/animation_gorge_profile_10s.mp4/content) |
-| Full corridor | Oblique 3-D | 60 s | [Open MP4](https://zenodo.org/api/records/22549201/files/animation_full_corridor_oblique_60s.mp4/content) |
-| Full corridor | Plan view | 60 s | [Open MP4](https://zenodo.org/api/records/22549201/files/animation_full_corridor_top_60s.mp4/content) |
-| Full corridor | Longitudinal profile | 60 s | [Open MP4](https://zenodo.org/api/records/22549201/files/animation_full_corridor_profile_60s.mp4/content) |
+| Gorge | Oblique 3-D | 5 s | [Open MP4](https://zenodo.org/records/22566624/files/animation_gorge_oblique_5s.mp4) |
+| Gorge | Plan view | 5 s | [Open MP4](https://zenodo.org/records/22566624/files/animation_gorge_top_5s.mp4) |
+| Gorge | Longitudinal profile | 5 s | [Open MP4](https://zenodo.org/records/22566624/files/animation_gorge_profile_5s.mp4) |
+| Full corridor | Oblique 3-D | 60 s | [Open MP4](https://zenodo.org/records/22566624/files/animation_full_corridor_oblique_60s.mp4) |
+| Full corridor | Plan view | 60 s | [Open MP4](https://zenodo.org/records/22566624/files/animation_full_corridor_top_60s.mp4) |
+| Full corridor | Longitudinal profile | 60 s | [Open MP4](https://zenodo.org/records/22566624/files/animation_full_corridor_profile_60s.mp4) |
 
-The archived code is available at [doi:10.5281/zenodo.22549896](https://doi.org/10.5281/zenodo.22549896). The reproduction instructions below describe the original reconstruction.
+The [all-version DOI](https://doi.org/10.5281/zenodo.22549200) resolves to the latest release. [Version 1](https://doi.org/10.5281/zenodo.22549201) preserves the original inputs, outputs and earlier animations as a historical archive. Those earlier videos do not represent the corrected model.
+
+The [code archive](https://doi.org/10.5281/zenodo.22549896) and the reproduction instructions below describe the original reconstruction. This animation update does not update that separate code release. The revised animation archive includes supporting outputs and rendering scripts, with a README and file provenance.
 
 ## Layout
 
